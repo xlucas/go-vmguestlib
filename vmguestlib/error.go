@@ -53,14 +53,16 @@ var errors = map[uint]string{
 
 // A VMGuestLib error.
 type Error struct {
-	NativeError C.VMGuestLibError
-	Message     string
+	// The native VMGuestLibError object.
+	NativeError *C.VMGuestLibError
+	// The error message corresponding to the native error.
+	Message string
 }
 
 // NewError creates a VMGuestLib error from a native error.
 func NewError(e C.VMGuestLibError) *Error {
 	return &Error{
-		NativeError: e,
+		NativeError: &e,
 		Message:     errors[uint(e)],
 	}
 }

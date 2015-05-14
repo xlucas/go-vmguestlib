@@ -20,6 +20,7 @@ import "C"
 // state of another handle.
 //
 type Handle struct {
+	// The native VMGuestLibHandle object.
 	NativeHandle *C.VMGuestLibHandle
 }
 
