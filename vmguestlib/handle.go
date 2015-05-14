@@ -30,7 +30,7 @@ func NewHandle() (h *Handle, err error) {
 	}
 	e := C.VMGuestLib_OpenHandle(h.NativeHandle)
 	if e != ERROR_SUCCESS {
-		err = newError(e)
+		err = NewError(e)
 	}
 	return h, err
 }
@@ -39,7 +39,7 @@ func NewHandle() (h *Handle, err error) {
 func (h *Handle) Close() (err error) {
 	e := C.VMGuestLib_CloseHandle(*h.NativeHandle)
 	if e != ERROR_SUCCESS {
-		err = newError(e)
+		err = NewError(e)
 	}
 	return
 }

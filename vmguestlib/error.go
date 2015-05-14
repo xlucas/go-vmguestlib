@@ -7,7 +7,7 @@ package vmguestlib
 */
 import "C"
 
-// Error codes returned by the native VMGuestLib API
+// Error codes returned by the native VMGuestLib API.
 const (
 	ERROR_SUCCESS             = iota // No error.
 	ERROR_OTHER                      // Other error.
@@ -22,7 +22,7 @@ const (
 	ERROR_UNSUPPORTED_VERSION        // The host doesn't support this request.
 )
 
-// Error messages associated to the native VMGuestLib API error codes
+// Error messages associated to the native VMGuestLib API error codes.
 const (
 	ERROR_MSG_SUCCESS             = "The function has completed successfully."
 	ERROR_MSG_OTHER               = "An error has occurred. No additional information about the type of the error is available."
@@ -51,18 +51,21 @@ var errors = map[uint]string{
 	ERROR_UNSUPPORTED_VERSION: ERROR_MSG_UNSUPPORTED_VERSION,
 }
 
+// A VMGuestLib error.
 type Error struct {
 	NativeError C.VMGuestLibError
 	Message     string
 }
 
-func newError(e C.VMGuestLibError) *Error {
+// NewError creates a VMGuestLib error from a native error.
+func NewError(e C.VMGuestLibError) *Error {
 	return &Error{
 		NativeError: e,
 		Message:     errors[uint(e)],
 	}
 }
 
+// Error returns the message associated with the error.
 func (e *Error) Error() string {
 	return e.Message
 }
