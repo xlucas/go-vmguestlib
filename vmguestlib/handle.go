@@ -44,3 +44,17 @@ func (h *Handle) Close() (err error) {
 	}
 	return
 }
+
+// UpdateInfo updates the session state for the current handle.
+// No locking is done internally, so multithreading environments
+// should use separate handles. This is a fairly heavyweight
+// function on the native API side so environments concerned
+// about performance should minimize the number of calls to
+// this function.
+func (h *Handle) UpdateInfo() (err error) {
+	e := C.VMGuestLib_UpdateInfo(*h.NativeHandle)
+	if e != ERROR_SUCCESS {
+		err = NewError(e)
+	}
+	return
+}
