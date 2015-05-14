@@ -52,14 +52,14 @@ var errors = map[uint]string{
 }
 
 type Error struct {
-	Code    uint
-	Message string
+	NativeError C.VMGuestLibError
+	Message     string
 }
 
 func newError(e C.VMGuestLibError) *Error {
 	return &Error{
-		Code:    uint(e),
-		Message: errors[uint(e)],
+		NativeError: e,
+		Message:     errors[uint(e)],
 	}
 }
 
