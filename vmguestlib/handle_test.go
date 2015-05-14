@@ -2,7 +2,7 @@ package vmguestlib
 
 import "testing"
 
-func TestCreateAndCloseHandle(t *testing.T) {
+func TestOpenAndCloseHandle(t *testing.T) {
 	h, err := NewHandle()
 	if err != nil {
 		t.Fatal(err)
