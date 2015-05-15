@@ -61,7 +61,7 @@ func (s *Session) Refresh() (changed bool, err error) {
 	newSession := new(C.VMSessionId)
 	e := C.VMGuestLib_GetSessionId(*s.Handle.NativeHandle, newSession)
 	if e != ERROR_SUCCESS {
-		err = NewError(e)
+		err = newError(e)
 		return
 	}
 	changed = (*newSession != *s.NativeSession)
@@ -86,7 +86,7 @@ func (s *Session) GetCpuLimitMhz() (limit uint32, err error) {
 	cLimit := new(C.uint32)
 	e := C.VMGuestLib_GetCpuLimitMHz(*s.Handle.NativeHandle, cLimit)
 	if e != ERROR_SUCCESS {
-		err = NewError(e)
+		err = newError(e)
 	}
 	limit = uint32(*cLimit)
 	return
@@ -98,7 +98,7 @@ func (s *Session) GetCpuReservationMhz() (reserved uint32, err error) {
 	cReserved := new(C.uint32)
 	e := C.VMGuestLib_GetCpuReservationMHz(*s.Handle.NativeHandle, cReserved)
 	if e != ERROR_SUCCESS {
-		err = NewError(e)
+		err = newError(e)
 	}
 	reserved = uint32(*cReserved)
 	return
@@ -110,7 +110,7 @@ func (s *Session) GetElaspedTime() (t time.Duration, err error) {
 	elapsedMs := new(C.uint64)
 	e := C.VMGuestLib_GetElapsedMs(*s.Handle.NativeHandle, elapsedMs)
 	if e != ERROR_SUCCESS {
-		err = NewError(e)
+		err = newError(e)
 	}
 	t = time.Duration(*elapsedMs) * time.Millisecond
 	return

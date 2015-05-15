@@ -60,7 +60,7 @@ type Error struct {
 }
 
 // NewError creates a VMGuestLib error from a native error.
-func NewError(e C.VMGuestLibError) *Error {
+func newError(e C.VMGuestLibError) *Error {
 	return &Error{
 		NativeError: &e,
 		Message:     errors[uint(e)],
