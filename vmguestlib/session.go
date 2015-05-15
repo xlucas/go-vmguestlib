@@ -9,9 +9,9 @@ package vmguestlib
 import "C"
 import "time"
 
-// A VMGuestLib session.
-//
-// This is used to detect changes in the "session" of a virtual
+// Session gives access to accessor functions through the usage of a
+// particular Handle.
+// Session is also used to detect changes in the "session" of a virtual
 // machine. "Session" in this context refers to the particular running
 // instance of this virtual machine on a given host. Moving a virtual
 // machine to another host using VMotion will cause a session change
@@ -62,7 +62,7 @@ func NewSession() (s *Session, err error) {
 func (s *Session) Refresh() (changed bool, err error) {
 	newSession := new(C.VMSessionId)
 	e := C.VMGuestLib_GetSessionId(*s.Handle.NativeHandle, newSession)
-	if e != ERROR_SUCCESS {
+	if e != ErrorSuccess {
 		err = newError(e)
 		return
 	}
@@ -82,36 +82,36 @@ func (s *Session) RefreshInfo() (changed bool, err error) {
 	return
 }
 
-// GetCpuLimitMhz retrieves the maximum processing power in MHz
+// GetCPULimitMhz retrieves the maximum processing power in MHz
 // available to the virtual machine.
-func (s *Session) GetCpuLimitMhz() (limit uint32, err error) {
-	cLimit := new(C.uint32)
-	e := C.VMGuestLib_GetCpuLimitMHz(*s.Handle.NativeHandle, cLimit)
-	if e != ERROR_SUCCESS {
+func (s *Session) GetCPULimitMhz() (l uint32, err error) {
+	nativeVal := new(C.uint32)
+	e := C.VMGuestLib_GetCpuLimitMHz(*s.Handle.NativeHandle, nativeVal)
+	if e != ErrorSuccess {
 		err = newError(e)
 	}
-	limit = uint32(*cLimit)
+	l = uint32(*nativeVal)
 	return
 }
 
-// GetCpuReservationMhz retrieves the minimum processing power in
+// GetCPUReservationMhz retrieves the minimum processing power in
 // MHz available to the virtual machine.
-func (s *Session) GetCpuReservationMhz() (reserved uint32, err error) {
-	cReserved := new(C.uint32)
-	e := C.VMGuestLib_GetCpuReservationMHz(*s.Handle.NativeHandle, cReserved)
-	if e != ERROR_SUCCESS {
+func (s *Session) GetCPUReservationMhz() (r uint32, err error) {
+	nativeVal := new(C.uint32)
+	e := C.VMGuestLib_GetCpuReservationMHz(*s.Handle.NativeHandle, nativeVal)
+	if e != ErrorSuccess {
 		err = newError(e)
 	}
-	reserved = uint32(*cReserved)
+	r = uint32(*nativeVal)
 	return
 }
 
-// GetCpuShares retrieves the number of CPU shares allocated to the
+// GetCPUShares retrieves the number of CPU shares allocated to the
 // virtual machine.
-func (s *Session) GetCpuShares() (shares uint32, err error) {
+func (s *Session) GetCPUShares() (shares uint32, err error) {
 	cShares := new(C.uint32)
 	e := C.VMGuestLib_GetCpuShares(*s.Handle.NativeHandle, cShares)
-	if e != ERROR_SUCCESS {
+	if e != ErrorSuccess {
 		err = newError(e)
 	}
 	shares = uint32(*cShares)
@@ -121,11 +121,11 @@ func (s *Session) GetCpuShares() (shares uint32, err error) {
 // GetElaspedTime retrieves the duration since the virtual machine
 // started running in the current host system.
 func (s *Session) GetElaspedTime() (t time.Duration, err error) {
-	elapsedMs := new(C.uint64)
-	e := C.VMGuestLib_GetElapsedMs(*s.Handle.NativeHandle, elapsedMs)
-	if e != ERROR_SUCCESS {
+	nativeVal := new(C.uint64)
+	e := C.VMGuestLib_GetElapsedMs(*s.Handle.NativeHandle, nativeVal)
+	if e != ErrorSuccess {
 		err = newError(e)
 	}
-	t = time.Duration(*elapsedMs) * time.Millisecond
+	t = time.Duration(*nativeVal) * time.Millisecond
 	return
 }

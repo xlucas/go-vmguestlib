@@ -9,46 +9,46 @@ import "C"
 
 // Error codes returned by the native VMGuestLib API.
 const (
-	ERROR_SUCCESS             = iota // No error.
-	ERROR_OTHER                      // Other error.
-	ERROR_NOT_RUNNING_IN_VM          // Not running in a VM.
-	ERROR_NOT_ENABLED                // GuestLib not enabled on the host.
-	ERROR_NOT_AVAILABLE              // This stat is not available on the host.
-	ERROR_NO_INFO                    // UpdateInfo() has never been called.
-	ERROR_MEMORY                     // Not enough memory.
-	ERROR_BUFFER_TOO_SMALL           // Buffer too small.
-	ERROR_INVALID_HANDLE             // Handle is invalid.
-	ERROR_INVALID_ARG                // One or more arguments were invalid.
-	ERROR_UNSUPPORTED_VERSION        // The host doesn't support this request.
+	ErrorSuccess            = iota // No error.
+	ErrorOther                     // Other error.
+	ErrorNotRunningInVm            // Not running in a VM.
+	ErrorNotEnabled                // GuestLib not enabled on the host.
+	ErrorNotAvailable              // This stat is not available on the host.
+	ErrorNoInfo                    // UpdateInfo() has never been called.
+	ErrorMemory                    // Not enough memory.
+	ErrorBufferTooSmall            // Buffer too small.
+	ErrorInvalidHandle             // Handle is invalid.
+	ErrorInvalidArg                // One or more arguments were invalid.
+	ErrorUnsupportedVersion        // The host doesn't support this request.
 )
 
 // Error messages associated to the native VMGuestLib API error codes.
 const (
-	ERROR_MSG_SUCCESS             = "The function has completed successfully."
-	ERROR_MSG_OTHER               = "An error has occurred. No additional information about the type of the error is available."
-	ERROR_MSG_NOT_RUNNING_IN_VM   = "The program making this call is not running on a VMware virtualmachine."
-	ERROR_MSG_NOT_ENABLED         = "The vSphere Guest API is not enabled on this host so these functions cannot be used."
-	ERROR_MSG_NOT_AVAILABLE       = "The information requested is not available on this host."
-	ERROR_MSG_NO_INFO             = "The handle data structure does not contain any information."
-	ERROR_MSG_MEMORY              = "There is not enough memory available to complete the call."
-	ERROR_MSG_BUFFER_TOO_SMALL    = "The buffer is too small to accommodate the function call."
-	ERROR_MSG_INVALID_HANDLE      = "The handle that you used is invalid."
-	ERROR_MSG_INVALID_ARG         = "One or more of the arguments passed to the function were invalid."
-	ERROR_MSG_UNSUPPORTED_VERSION = "The host does not support the requested statistic."
+	ErrorMsgSuccess            = "The function has completed successfully."
+	ErrorMsgOther              = "An error has occurred. No additional information about the type of the error is available."
+	ErrorMsgNotRunningInVm     = "The program making this call is not running on a VMware virtualmachine."
+	ErrorMsgNotEnabled         = "The vSphere Guest API is not enabled on this host so these functions cannot be used."
+	ErrorMsgNotAvailable       = "The information requested is not available on this host."
+	ErrorMsgNoInfo             = "The handle data structure does not contain any information."
+	ErrorMsgMemory             = "There is not enough memory available to complete the call."
+	ErrorMsgBufferTooSmall     = "The buffer is too small to accommodate the function call."
+	ErrorMsgInvalidHandle      = "The handle that you used is invalid."
+	ErrorMsgInvalidArg         = "One or more of the arguments passed to the function were invalid."
+	ErrorMsgUnsupportedVersion = "The host does not support the requested statistic."
 )
 
 var errors = map[uint]string{
-	ERROR_SUCCESS:             ERROR_MSG_SUCCESS,
-	ERROR_OTHER:               ERROR_MSG_OTHER,
-	ERROR_NOT_RUNNING_IN_VM:   ERROR_MSG_NOT_RUNNING_IN_VM,
-	ERROR_NOT_ENABLED:         ERROR_MSG_NOT_ENABLED,
-	ERROR_NOT_AVAILABLE:       ERROR_MSG_NOT_AVAILABLE,
-	ERROR_NO_INFO:             ERROR_MSG_NO_INFO,
-	ERROR_MEMORY:              ERROR_MSG_MEMORY,
-	ERROR_BUFFER_TOO_SMALL:    ERROR_MSG_BUFFER_TOO_SMALL,
-	ERROR_INVALID_HANDLE:      ERROR_MSG_INVALID_HANDLE,
-	ERROR_INVALID_ARG:         ERROR_MSG_INVALID_ARG,
-	ERROR_UNSUPPORTED_VERSION: ERROR_MSG_UNSUPPORTED_VERSION,
+	ErrorSuccess:            ErrorMsgSuccess,
+	ErrorOther:              ErrorMsgOther,
+	ErrorNotRunningInVm:     ErrorMsgNotRunningInVm,
+	ErrorNotEnabled:         ErrorMsgNotEnabled,
+	ErrorNotAvailable:       ErrorMsgNotAvailable,
+	ErrorNoInfo:             ErrorMsgNoInfo,
+	ErrorMemory:             ErrorMsgMemory,
+	ErrorBufferTooSmall:     ErrorMsgBufferTooSmall,
+	ErrorInvalidHandle:      ErrorMsgInvalidHandle,
+	ErrorInvalidArg:         ErrorMsgInvalidArg,
+	ErrorUnsupportedVersion: ErrorMsgUnsupportedVersion,
 }
 
 // A VMGuestLib error.

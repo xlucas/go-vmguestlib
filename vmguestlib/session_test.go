@@ -58,34 +58,34 @@ func TestRefreshInfoSession(t *testing.T) {
 	}
 }
 
-func TestGetCpuLimitMhz(t *testing.T) {
+func TestGetCPULimitMhz(t *testing.T) {
 	s, err := NewSession()
 	if err != nil {
 		t.Fatal(err)
 	}
-	_, err = s.GetCpuLimitMhz()
+	_, err = s.GetCPULimitMhz()
 	if err != nil {
 		t.Fatal(err)
 	}
 }
 
-func TestGetCpuReservationMhz(t *testing.T) {
+func TestGetCPUReservationMhz(t *testing.T) {
 	s, err := NewSession()
 	if err != nil {
 		t.Fatal(err)
 	}
-	_, err = s.GetCpuReservationMhz()
+	_, err = s.GetCPUReservationMhz()
 	if err != nil {
 		t.Fatal(err)
 	}
 }
 
-func TestGetCpuShares(t *testing.T) {
+func TestGetCPUShares(t *testing.T) {
 	s, err := NewSession()
 	if err != nil {
 		t.Fatal(err)
 	}
-	_, err = s.GetCpuShares()
+	_, err = s.GetCPUShares()
 	if err != nil {
 		t.Fatal(err)
 	}
