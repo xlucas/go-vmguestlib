@@ -31,4 +31,4 @@ In order to use this library, to build it or to run the tests, you will need to 
 See the accompanying [AUTHORS](AUTHORS) file.
 
 ## License
-This library is distributed under the [GNU GPL V2.0 License](LICENSE).`
+This library is distributed under the [GNU GPL V2.0 License](LICENSE).
