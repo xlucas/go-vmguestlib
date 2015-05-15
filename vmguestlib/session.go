@@ -113,25 +113,25 @@ func (s *Session) GetElaspedTime() (t time.Duration, err error) {
 	return
 }
 
-// Host Processor speed.
+// GetHostProcessorSpeed retrieves the host processor speed.
 func (s *Session) GetHostProcessorSpeed() (uint32, error) {
 	return s.Handle.getUint32Value(C.p_uint32_f(C.VMGuestLib_GetHostProcessorSpeed))
 }
 
-// Retrieves the minimum amount of memory that is available to the
-// virtual machine.
+// GetMemReservation retrieves the minimum amount of memory
+// that is available to the virtual machine.
 func (s *Session) GetMemReservation() (uint32, error) {
 	return s.Handle.getUint32Value(C.p_uint32_f(C.VMGuestLib_GetMemReservationMB))
 }
 
-// Retrieves the maximum amount of memory that is available to the
-// virtual machine.
+// GetMemLimit retrieves the maximum amount of memory that
+// is available to the virtual machine.
 func (s *Session) GetMemLimit() (uint32, error) {
 	return s.Handle.getUint32Value(C.p_uint32_f(C.VMGuestLib_GetMemLimitMB))
 }
 
-// Retrieves the number of memory shares allocated to the virtual
-// machine.
+// GetMemShares retrieves the number of memory shares allocated
+// to the virtual machine.
 func (s *Session) GetMemShares() (uint32, error) {
 	return s.Handle.getUint32Value(C.p_uint32_f(C.VMGuestLib_GetMemShares))
 }

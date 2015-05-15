@@ -57,6 +57,10 @@ func (h *Handle) UpdateInfo() (err error) {
 	return
 }
 
+// getUint32Value retrieves one uint32 native accessor value
+// by calling the native accessor routine wrapped into a
+// native proxy function pointer type and converting the C
+// uint32 value to golang's relevant type.
 func (h *Handle) getUint32Value(p C.p_uint32_f) (v uint32, err error) {
 	nativeUint32 := new(C.uint32)
 	nativeError := C.proxy_uint32_f(p, *h.NativeHandle, nativeUint32)
