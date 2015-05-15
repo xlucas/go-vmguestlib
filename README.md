@@ -1,7 +1,7 @@
 # go-vmguestlib
 [![GoDoc](https://godoc.org/github.com/xlucas/go-vmguestlib/vmguestlib?status.svg)](https://godoc.org/github.com/xlucas/go-vmguestlib/vmguestlib)
 
-A wrapper of VMware® vSphere Guest API for Go.
+VMware® vSphere Guest API for Go.
 
 ## Disclaimer
 This is not an official VMware® product.
