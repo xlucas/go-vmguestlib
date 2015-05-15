@@ -11,7 +11,7 @@ gen-accessor-code:
 	PACKAGE=$(PACKAGE) envsubst <$(TEMPLATES)/session_accessor_header.template >$(PACKAGE)/session_accessor.go
 	while read line ; do  \
 		eval "$$line"; \
-		eval `grep "$$FUNCTION " accessors_comments.list`; \
+		eval `grep "$$FUNCTION " accessors.godoc`; \
 		FUNCTION=$$FUNCTION \
 		NATIVE_FUNCTION=$$NATIVE_FUNCTION \
 		VALUE_TYPE_L=$$VALUE_TYPE_L \
