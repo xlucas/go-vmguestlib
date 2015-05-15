@@ -8,7 +8,7 @@ gen-accessor-test:
 	done
 
 gen-accessor-code:
-	PACKAGE=$(PACKAGE) envsubst <$(TEMPLATES)/session_accessor_header.template >$(PACKAGE)/session_accessor.go
+	PACKAGE=$(PACKAGE) envsubst <$(TEMPLATES)/accessor_header.template >$(PACKAGE)/session_accessor.go
 	while read line ; do  \
 		eval "$$line"; \
 		eval `grep "$$FUNCTION " accessors.godoc`; \
@@ -17,7 +17,7 @@ gen-accessor-code:
 		VALUE_TYPE_L=$$VALUE_TYPE_L \
 		VALUE_TYPE_U=$$VALUE_TYPE_U \
 		COMMENT=$$COMMENT \
-		FUNCTION=$$FUNCTION envsubst <$(TEMPLATES)/session_accessor.template >>$(PACKAGE)/session_accessor.go; \
+		FUNCTION=$$FUNCTION envsubst <$(TEMPLATES)/accessor.template >>$(PACKAGE)/session_accessor.go; \
 	done < accessors.list
 
 gen-accessor: gen-accessor-code gen-accessor-test
