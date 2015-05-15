@@ -1,7 +1,8 @@
 # go-vmguestlib
 
-[![GoDoc](https://godoc.org/github.com/xlucas/go-vmguestlib/vmguestlib?status.svg)](https://godoc.org/github.com/xlucas/go-vmguestlib/vmguestlib)
-[![GitHub version](https://badge.fury.io/gh/xlucas%2Fgo-vmguestlib.svg)](http://badge.fury.io/gh/xlucas%2Fgo-vmguestlib)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/xlucas/go-vmguestlib/vmguestlib)
+[![GitHub version](https://img.shields.io/github/release/xlucas/go-vmguestlib.svg)](https://github.com/xlucas/go-vmguestlib/releases/tag/v1.0.0)
+[![Github licence](https://img.shields.io/github/license/xlucas/go-vmguestlib.svg)](LICENSE)
 
 VMware® vSphere Guest API for Go.
 
@@ -12,25 +13,28 @@ This is not an official VMware® product.
 In order to use this library, to build it or to run the tests, you will need to :
 
 * Install the VMware® tools.
-* Make sure Guest API runtime components are enabled on vSphere. If not, set `isolation.tools.guestlibGetInfo.disable = "TRUE"` in your virtual machines configurations.
-* Run the following commands as root :
-  * On Debian/Ubuntu :
-  ```bash
-  echo "/usr/lib/vmware-tools/lib/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-libraries.conf
-  ```
+* Make sure Guest API runtime components are enabled on vSphere. If needed, add in your virtual machines configurations (.vmx) :
 
-  * On RedHat/CentOS :
-  ```bash
-  echo "/usr/lib/vmware-tools/lib/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-guestlib.conf
-  ```
+```
+isolation.tools.guestlibGetInfo.disable = "FALSE"
+```
 
-  * Then, for all platforms :
-  ```bash
-  ldconfig
-  ```
+* Then, depending on your OS, run either :
 
-## Author(s)
-See the accompanying [AUTHORS](AUTHORS) file.
+On Debian/Ubuntu :
+```bash
+echo /usr/lib/vmware-tools/lib/libvmtools.so >>/etc/ld.so.conf.d/vmware-tools-libraries.conf
+```
 
-## License
-This library is distributed under the [GNU GPL V2.0 License](LICENSE).
+Or on RedHat/CentOS :
+```bash
+echo /usr/lib/vmware-tools/lib/libvmtools.so >>/etc/ld.so.conf.d/vmware-tools-guestlib.conf
+```
+
+Eventually, independently of the OS your guest VM is running on, update the dynamic loader dependencies with :
+```bash
+ldconfig
+```
+
+## Contributing
+Feel free to contribute if you think something is missing. The makefile contains some targets that are used to generate accessors code and unit tests. It uses template files and two input lists that describe the mapping between the native and Go APIs as well as provide documentation). If you need to rebuild the accessor codes and corresponding tests, then run `make gen-accessor`.
