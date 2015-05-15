@@ -15,7 +15,6 @@ static inline VMGuestLibError proxy_uint32_f(p_uint32_f f, VMGuestLibHandle h, u
     return f(h, v);
 }
 
-
 #ifdef __cplusplus
 }
 #endif

@@ -58,23 +58,23 @@ func TestRefreshInfoSession(t *testing.T) {
 	}
 }
 
-func TestGetCPULimitMhz(t *testing.T) {
+func TestGetCPULimit(t *testing.T) {
 	s, err := NewSession()
 	if err != nil {
 		t.Fatal(err)
 	}
-	_, err = s.GetCPULimitMhz()
+	_, err = s.GetCPULimit()
 	if err != nil {
 		t.Fatal(err)
 	}
 }
 
-func TestGetCPUReservationMhz(t *testing.T) {
+func TestGetCPUReservation(t *testing.T) {
 	s, err := NewSession()
 	if err != nil {
 		t.Fatal(err)
 	}
-	_, err = s.GetCPUReservationMhz()
+	_, err = s.GetCPUReservation()
 	if err != nil {
 		t.Fatal(err)
 	}

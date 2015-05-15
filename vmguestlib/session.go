@@ -83,16 +83,16 @@ func (s *Session) RefreshInfo() (changed bool, err error) {
 	return
 }
 
-// GetCPULimitMhz retrieves the maximum processing power in MHz
+// GetCPULimit retrieves the maximum processing power in MHz
 // available to the virtual machine.
-func (s *Session) GetCPULimitMhz() (uint32, error) {
-	return s.Handle.getUint32Value(nativeGetCPULimitMhz)
+func (s *Session) GetCPULimit() (uint32, error) {
+	return s.Handle.getUint32Value(nativeGetCPULimit)
 }
 
-// GetCPUReservationMhz retrieves the minimum processing power in
+// GetCPUReservation retrieves the minimum processing power in
 // MHz available to the virtual machine.
-func (s *Session) GetCPUReservationMhz() (uint32, error) {
-	return s.Handle.getUint32Value(nativeGetCPUReservationMhz)
+func (s *Session) GetCPUReservation() (uint32, error) {
+	return s.Handle.getUint32Value(nativeGetCPUReservation)
 }
 
 // GetCPUShares retrieves the number of CPU shares allocated to the
