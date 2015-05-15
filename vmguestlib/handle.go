@@ -1,9 +1,10 @@
 package vmguestlib
 
 /*
-#cgo CFLAGS: -I../native
+#cgo CFLAGS: -I../vendor -I../native
 #cgo LDFLAGS: -L/usr/lib/vmware-tools/lib/libvmtools.so -L/usr/lib/vmware-tools/lib/libvmGuestLib.so -lvmtools -lvmGuestLib
 #include <vmGuestLib.h>
+#include <vmGuestLibProxy.h>
 */
 import "C"
 
@@ -53,5 +54,16 @@ func (h *Handle) UpdateInfo() (err error) {
 	if e != ErrorSuccess {
 		err = newError(e)
 	}
+	return
+}
+
+func (h *Handle) getUint32Value(p C.p_uint32_f) (v uint32, err error) {
+	nativeUint32 := new(C.uint32)
+	nativeError := C.proxy_uint32_f(p, *h.NativeHandle, nativeUint32)
+	if nativeError != ErrorSuccess {
+		err = newError(nativeError)
+		return
+	}
+	v = uint32(*nativeUint32)
 	return
 }

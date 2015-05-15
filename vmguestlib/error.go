@@ -1,7 +1,7 @@
 package vmguestlib
 
 /*
-#cgo CFLAGS: -I../native
+#cgo CFLAGS: -I../vendor -I../native
 #cgo LDFLAGS: -L/usr/lib/vmware-tools/lib/libvmtools.so -L/usr/lib/vmware-tools/lib/libvmGuestLib.so -lvmtools -lvmGuestLib
 #include <vmGuestLib.h>
 */

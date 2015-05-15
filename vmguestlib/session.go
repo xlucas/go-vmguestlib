@@ -1,10 +1,11 @@
 package vmguestlib
 
 /*
-#cgo CFLAGS: -I../native
+#cgo CFLAGS: -I../vendor -I../native
 #cgo LDFLAGS: -L/usr/lib/vmware-tools/lib/libvmtools.so -L/usr/lib/vmware-tools/lib/libvmGuestLib.so -lvmtools -lvmGuestLib
 #include <vmGuestLib.h>
 #include <vmSessionId.h>
+#include <vmGuestLibProxy.h>
 */
 import "C"
 import "time"
@@ -84,38 +85,20 @@ func (s *Session) RefreshInfo() (changed bool, err error) {
 
 // GetCPULimitMhz retrieves the maximum processing power in MHz
 // available to the virtual machine.
-func (s *Session) GetCPULimitMhz() (l uint32, err error) {
-	nativeVal := new(C.uint32)
-	e := C.VMGuestLib_GetCpuLimitMHz(*s.Handle.NativeHandle, nativeVal)
-	if e != ErrorSuccess {
-		err = newError(e)
-	}
-	l = uint32(*nativeVal)
-	return
+func (s *Session) GetCPULimitMhz() (uint32, error) {
+	return s.Handle.getUint32Value(nativeGetCPULimitMhz)
 }
 
 // GetCPUReservationMhz retrieves the minimum processing power in
 // MHz available to the virtual machine.
-func (s *Session) GetCPUReservationMhz() (r uint32, err error) {
-	nativeVal := new(C.uint32)
-	e := C.VMGuestLib_GetCpuReservationMHz(*s.Handle.NativeHandle, nativeVal)
-	if e != ErrorSuccess {
-		err = newError(e)
-	}
-	r = uint32(*nativeVal)
-	return
+func (s *Session) GetCPUReservationMhz() (uint32, error) {
+	return s.Handle.getUint32Value(nativeGetCPUReservationMhz)
 }
 
 // GetCPUShares retrieves the number of CPU shares allocated to the
 // virtual machine.
-func (s *Session) GetCPUShares() (shares uint32, err error) {
-	cShares := new(C.uint32)
-	e := C.VMGuestLib_GetCpuShares(*s.Handle.NativeHandle, cShares)
-	if e != ErrorSuccess {
-		err = newError(e)
-	}
-	shares = uint32(*cShares)
-	return
+func (s *Session) GetCPUShares() (uint32, error) {
+	return s.Handle.getUint32Value(nativeGetCPUShares)
 }
 
 // GetElaspedTime retrieves the duration since the virtual machine
