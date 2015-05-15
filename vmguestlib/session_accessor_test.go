@@ -35,17 +35,6 @@ func TestGetCPUShares(t *testing.T) {
 	}
 }
 
-func TestGetCPUUsed(t *testing.T) {
-	s, err := NewSession()
-	if err != nil {
-		t.Fatal(err)
-	}
-	_, err = s.GetCPUUsed()
-	if err != nil {
-		t.Fatal(err)
-	}
-}
-
 func TestGetHostProcessorSpeed(t *testing.T) {
 	s, err := NewSession()
 	if err != nil {
@@ -200,12 +189,12 @@ func TestGetTimeElapsed(t *testing.T) {
 	}
 }
 
-func TestGetCpuStolen(t *testing.T) {
+func TestGetCPUStolen(t *testing.T) {
 	s, err := NewSession()
 	if err != nil {
 		t.Fatal(err)
 	}
-	_, err = s.GetCpuStolen()
+	_, err = s.GetCPUStolen()
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -217,6 +206,17 @@ func TestGetMemTargetSize(t *testing.T) {
 		t.Fatal(err)
 	}
 	_, err = s.GetMemTargetSize()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetCPUUsed(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetCPUUsed()
 	if err != nil {
 		t.Fatal(err)
 	}
