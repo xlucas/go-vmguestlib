@@ -80,6 +80,18 @@ func (s *Session) RefreshInfo() (changed bool, err error) {
 	return
 }
 
+// Retrieves the maximum processing power in MHz available to the virtual
+// machine.
+func (s *Session) GetCpuLimitMhz() (limit uint32, err error) {
+	cLimit := new(C.uint32)
+	e := C.VMGuestLib_GetCpuLimitMHz(*s.Handle.NativeHandle, cLimit)
+	if e != ERROR_SUCCESS {
+		err = NewError(e)
+	}
+	limit = uint32(*cLimit)
+	return
+}
+
 // GetElaspedTime retrieves the duration since the virtual machine
 // started running in the current host system.
 func (s *Session) GetElaspedTime() (t time.Duration, err error) {
