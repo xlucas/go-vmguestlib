@@ -26,7 +26,9 @@ import "time"
 // of previously retrieved information.
 //
 type Session struct {
-	Handle        *Handle
+	// A handle object.
+	Handle *Handle
+	// The native VMSessionId object.
 	NativeSession *C.VMSessionId
 }
 
@@ -101,6 +103,18 @@ func (s *Session) GetCpuReservationMhz() (reserved uint32, err error) {
 		err = newError(e)
 	}
 	reserved = uint32(*cReserved)
+	return
+}
+
+// GetCpuShares retrieves the number of CPU shares allocated to the
+// virtual machine.
+func (s *Session) GetCpuShares() (shares uint32, err error) {
+	cShares := new(C.uint32)
+	e := C.VMGuestLib_GetCpuShares(*s.Handle.NativeHandle, cShares)
+	if e != ERROR_SUCCESS {
+		err = newError(e)
+	}
+	shares = uint32(*cShares)
 	return
 }
 

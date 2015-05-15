@@ -80,6 +80,17 @@ func TestGetCpuReservationMhz(t *testing.T) {
 	}
 }
 
+func TestGetCpuShares(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetCpuShares()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
 func TestGetElapsedTime(t *testing.T) {
 	s, err := NewSession()
 	if err != nil {
