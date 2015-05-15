@@ -51,7 +51,7 @@ var errors = map[uint]string{
 	ErrorUnsupportedVersion: ErrorMsgUnsupportedVersion,
 }
 
-// A VMGuestLib error.
+// Error is a native error code with an explanatory message.
 type Error struct {
 	// The native VMGuestLibError object.
 	NativeError *C.VMGuestLibError
