@@ -15,9 +15,12 @@ In order to use this library, to build it or to run the tests, you will need to 
 * Install the VMware® tools.
 * Run the following commands :
 ```bash
-# Update dynamic linker search paths
+# On Debian/Ubuntu :
 sudo sh -c 'echo "/usr/lib/vmware-tools/lib32/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-libraries.conf'
 sudo sh -c 'echo "/usr/lib/vmware-tools/lib64/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-libraries.conf'
+
+# On RedHat/CentOS :
+sudo sh -c 'echo "/usr/lib/vmware-tools/lib/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-guestlib.conf'
 
 # Update the dynamic linker cache
 sudo ldconfig
