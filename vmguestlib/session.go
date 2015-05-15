@@ -86,7 +86,7 @@ func (s *Session) RefreshInfo() (changed bool, err error) {
 // GetCPULimit retrieves the maximum processing power in MHz
 // available to the virtual machine.
 func (s *Session) GetCPULimit() (uint32, error) {
-	return s.Handle.getUint32Value(nativeGetCPULimit)
+	return s.Handle.getUint32Value(C.p_uint32_f(C.VMGuestLib_GetCpuLimitMHz))
 }
 
 // GetCPUReservation retrieves the minimum processing power in
