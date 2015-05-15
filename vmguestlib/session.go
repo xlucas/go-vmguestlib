@@ -92,13 +92,13 @@ func (s *Session) GetCPULimit() (uint32, error) {
 // GetCPUReservation retrieves the minimum processing power in
 // MHz available to the virtual machine.
 func (s *Session) GetCPUReservation() (uint32, error) {
-	return s.Handle.getUint32Value(nativeGetCPUReservation)
+	return s.Handle.getUint32Value(C.p_uint32_f(C.VMGuestLib_GetCpuReservationMHz))
 }
 
 // GetCPUShares retrieves the number of CPU shares allocated to the
 // virtual machine.
 func (s *Session) GetCPUShares() (uint32, error) {
-	return s.Handle.getUint32Value(nativeGetCPUShares)
+	return s.Handle.getUint32Value(C.p_uint32_f(C.VMGuestLib_GetCpuShares))
 }
 
 // GetElaspedTime retrieves the duration since the virtual machine
