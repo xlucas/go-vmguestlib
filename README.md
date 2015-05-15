@@ -4,7 +4,7 @@
 A wrapper of VMware® vSphere Guest API for Go.
 
 ## Project status
-This is a work-in-progress.
+This is a work-in-progress. The only missing big parts are native uint64 and heterogeneous types wrappers and an example file to compare the implementation usage from the native C library.
 
 ## Disclaimer
 This is not an official VMware® product.
