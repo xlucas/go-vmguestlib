@@ -14,12 +14,12 @@ In order to use this library, to build it or to run the tests, you will need to 
 * Run the following commands as root :
   * On Debian/Ubuntu :
   ```bash
-  echo "/usr/lib/vmware-tools/lib/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-libraries.conf'
+  echo "/usr/lib/vmware-tools/lib/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-libraries.conf
   ```
 
   * On RedHat/CentOS :
   ```bash
-  echo "/usr/lib/vmware-tools/lib/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-guestlib.conf'
+  echo "/usr/lib/vmware-tools/lib/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-guestlib.conf
   ```
 
   * Then, for all platforms :
