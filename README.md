@@ -1,5 +1,5 @@
 # go-vmguestlib
-[![GoDoc](https://godoc.org/github.com/xlucas/go-vmguestlib/vmguestlib?status.svg)](https://godoc.org/github.com/xlucas/go-vmguestlib/vmguestlib)
+[![GoDoc](https://godoc.org/github.com/xlucas/go-vmguestlib/vmguestlib?status.svg)](https://godoc.org/github.com/xlucas/go-vmguestlib/vmguestlib) [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/xlucas/go-vmguestlib.svg)](http://isitmaintained.com/project/xlucas/go-vmguestlib "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/xlucas/go-vmguestlib.svg)](http://isitmaintained.com/project/xlucas/go-vmguestlib "Percentage of issues still open")
 
 VMware® vSphere Guest API for Go.
 
