@@ -3,9 +3,6 @@
 
 A wrapper of VMware® vSphere Guest API for Go.
 
-## Project status
-This is a work-in-progress. The only missing big parts are native uint64 and heterogeneous types wrappers and an example file to compare the implementation usage from the native C library.
-
 ## Disclaimer
 This is not an official VMware® product.
 
@@ -13,21 +10,25 @@ This is not an official VMware® product.
 In order to use this library, to build it or to run the tests, you will need to :
 
 * Install the VMware® tools.
-* Run the following commands :
-```bash
-# On Debian/Ubuntu :
-sudo sh -c 'echo "/usr/lib/vmware-tools/lib32/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-libraries.conf'
-sudo sh -c 'echo "/usr/lib/vmware-tools/lib64/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-libraries.conf'
+* Make sure Guest API runtime components are enabled on vSphere. If not, set `isolation.tools.guestlibGetInfo.disable = "TRUE"` in your virtual machines configurations.
+* Run the following commands as root :
+  * On Debian/Ubuntu :
+  ```bash
+  echo "/usr/lib/vmware-tools/lib/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-libraries.conf'
+  ```
 
-# On RedHat/CentOS :
-sudo sh -c 'echo "/usr/lib/vmware-tools/lib/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-guestlib.conf'
+  * On RedHat/CentOS :
+  ```bash
+  echo "/usr/lib/vmware-tools/lib/libvmtools.so" >> /etc/ld.so.conf.d/vmware-tools-guestlib.conf'
+  ```
 
-# Update the dynamic linker cache
-sudo ldconfig
-```
+  * Then, for all platforms :
+  ```bash
+  ldconfig
+  ```
 
 ## Author(s)
 See the accompanying [AUTHORS](AUTHORS) file.
 
 ## License
-This library is distributed under the [GNU GPL V2.0 License](LICENSE).
+This library is distributed under the [GNU GPL V2.0 License](LICENSE).`
