@@ -69,6 +69,17 @@ func TestGetCpuLimitMhz(t *testing.T) {
 	}
 }
 
+func TestGetCpuReservationMhz(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetCpuReservationMhz()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
 func TestGetElapsedTime(t *testing.T) {
 	s, err := NewSession()
 	if err != nil {
