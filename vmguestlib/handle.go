@@ -71,3 +71,18 @@ func (h *Handle) getUint32Value(p C.p_uint32_f) (v uint32, err error) {
 	v = uint32(*nativeUint32)
 	return
 }
+
+// getUint64Value retrieves one uint64 native accessor value
+// by calling the native accessor routine wrapped into a
+// native proxy function pointer type and converting the C
+// uint64 value to golang's relevant type.
+func (h *Handle) getUint64Value(p C.p_uint64_f) (v uint64, err error) {
+	nativeUint64 := new(C.uint64)
+	nativeError := C.proxy_uint64_f(p, *h.NativeHandle, nativeUint64)
+	if nativeError != ErrorSuccess {
+		err = newError(nativeError)
+		return
+	}
+	v = uint64(*nativeUint64)
+	return
+}

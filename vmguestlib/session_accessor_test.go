@@ -35,6 +35,17 @@ func TestGetCPUShares(t *testing.T) {
 	}
 }
 
+func TestGetCPUUsed(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetCPUUsed()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
 func TestGetHostProcessorSpeed(t *testing.T) {
 	s, err := NewSession()
 	if err != nil {
@@ -173,6 +184,138 @@ func TestGetHostNumCPUCores(t *testing.T) {
 		t.Fatal(err)
 	}
 	_, err = s.GetHostNumCPUCores()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetTimeElapsed(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetTimeElapsed()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetCpuStolen(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetCpuStolen()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetMemTargetSize(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetMemTargetSize()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetHostCPUUsed(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetHostCPUUsed()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetHostMemSwapped(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetHostMemSwapped()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetHostMemShared(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetHostMemShared()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetHostMemUsed(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetHostMemUsed()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetHostMemPhys(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetHostMemPhys()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetHostMemPhysFree(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetHostMemPhysFree()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetHostMemKernOvhd(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetHostMemKernOvhd()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetHostMemMapped(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetHostMemMapped()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGetHostMemUnmapped(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.GetHostMemUnmapped()
 	if err != nil {
 		t.Fatal(err)
 	}

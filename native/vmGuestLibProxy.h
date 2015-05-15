@@ -9,8 +9,14 @@ extern "C" {
 #endif
 
 typedef VMGuestLibError (*p_uint32_f) ();
+typedef VMGuestLibError (*p_uint64_f) ();
 
 static inline VMGuestLibError proxy_uint32_f(p_uint32_f f, VMGuestLibHandle h, uint32* v)
+{
+    return f(h, v);
+}
+
+static inline VMGuestLibError proxy_uint64_f(p_uint64_f f, VMGuestLibHandle h, uint64* v)
 {
     return f(h, v);
 }
