@@ -80,8 +80,8 @@ func (s *Session) RefreshInfo() (changed bool, err error) {
 	return
 }
 
-// Retrieves the maximum processing power in MHz available to the virtual
-// machine.
+// GetCpuLimitMhz retrieves the maximum processing power in MHz
+// available to the virtual machine.
 func (s *Session) GetCpuLimitMhz() (limit uint32, err error) {
 	cLimit := new(C.uint32)
 	e := C.VMGuestLib_GetCpuLimitMHz(*s.Handle.NativeHandle, cLimit)
@@ -92,8 +92,8 @@ func (s *Session) GetCpuLimitMhz() (limit uint32, err error) {
 	return
 }
 
-// Retrieves the minimum processing power in MHz available to the virtual
-// machine.
+// GetCpuReservationMhz retrieves the minimum processing power in
+// MHz available to the virtual machine.
 func (s *Session) GetCpuReservationMhz() (reserved uint32, err error) {
 	cReserved := new(C.uint32)
 	e := C.VMGuestLib_GetCpuReservationMHz(*s.Handle.NativeHandle, cReserved)
