@@ -28,6 +28,36 @@ func TestNewSessionAndClose(t *testing.T) {
 	}
 }
 
+func TestRefreshSession(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.Refresh()
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = s.Close()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestRefreshInfoSession(t *testing.T) {
+	s, err := NewSession()
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.RefreshInfo()
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = s.Close()
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
 func TestGetElapsedTime(t *testing.T) {
 	s, err := NewSession()
 	if err != nil {
