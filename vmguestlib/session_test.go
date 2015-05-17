@@ -3,57 +3,55 @@ package vmguestlib
 import "testing"
 
 func TestOpenAndCloseSession(t *testing.T) {
-	h, err := NewHandle()
-	if err != nil {
+	var err error
+	var h *Handle
+	var s *Session
+
+	if h, err = NewHandle(); err != nil {
 		t.Fatal(err)
 	}
-	s, err := Open(h)
-	if err != nil {
+	if s, err = Open(h); err != nil {
 		t.Fatal(err)
 	}
-	err = s.Close()
-	if err != nil {
-		t.Fatal(err)
-	}
+
+	s.Close()
 }
 
 func TestNewSessionAndClose(t *testing.T) {
-	s, err := NewSession()
-	if err != nil {
+	var err error
+	var s *Session
+
+	if s, err = NewSession(); err != nil {
 		t.Fatal(err)
 	}
-	err = s.Close()
-	if err != nil {
-		t.Fatal(err)
-	}
+
+	s.Close()
 }
 
 func TestRefreshSession(t *testing.T) {
-	s, err := NewSession()
-	if err != nil {
+	var err error
+	var s *Session
+
+	if s, err = NewSession(); err != nil {
 		t.Fatal(err)
 	}
-	_, err = s.Refresh()
-	if err != nil {
+	if _, err = s.Refresh(); err != nil {
 		t.Fatal(err)
 	}
-	err = s.Close()
-	if err != nil {
-		t.Fatal(err)
-	}
+
+	s.Close()
 }
 
 func TestRefreshInfoSession(t *testing.T) {
-	s, err := NewSession()
-	if err != nil {
+	var err error
+	var s *Session
+
+	if s, err = NewSession(); err != nil {
 		t.Fatal(err)
 	}
-	_, err = s.RefreshInfo()
-	if err != nil {
+	if _, err = s.RefreshInfo(); err != nil {
 		t.Fatal(err)
 	}
-	err = s.Close()
-	if err != nil {
-		t.Fatal(err)
-	}
+
+	s.Close()
 }

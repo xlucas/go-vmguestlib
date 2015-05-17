@@ -3,27 +3,19 @@ package vmguestlib
 import "testing"
 
 func TestOpenAndCloseHandle(t *testing.T) {
-	h, err := NewHandle()
-	if err != nil {
+	if h, err := NewHandle(); err != nil {
 		t.Fatal(err)
-	}
-	err = h.Close()
-	if err != nil {
-		t.Fatal(err)
+	} else {
+		h.Close()
 	}
 }
 
 func TestUpdateInfo(t *testing.T) {
-	h, err := NewHandle()
-	if err != nil {
+	if h, err := NewHandle(); err != nil {
 		t.Fatal(err)
-	}
-	err = h.UpdateInfo()
-	if err != nil {
+	} else if err := h.UpdateInfo(); err != nil {
 		t.Fatal(err)
-	}
-	err = h.Close()
-	if err != nil {
-		t.Fatal(err)
+	} else {
+		h.Close()
 	}
 }

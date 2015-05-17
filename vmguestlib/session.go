@@ -33,51 +33,53 @@ type Session struct {
 }
 
 // Open fetch a new session from the given handle.
-func Open(h *Handle) (s *Session, err error) {
-	s = &Session{
+func Open(h *Handle) (*Session, error) {
+	s := &Session{
 		Handle:        h,
 		NativeSession: new(C.VMSessionId),
 	}
-	_, err = s.RefreshInfo()
-	return
+	_, err := s.RefreshInfo()
+	return s, err
 }
 
 // Close tears down the underlying handle.
-func (s *Session) Close() error {
-	return s.Handle.Close()
+func (s *Session) Close() {
+	s.Handle.Close()
 }
 
 // NewSession allocates a new handle and calls Open().
-func NewSession() (s *Session, err error) {
-	h, err := NewHandle()
-	if err != nil {
-		return
+func NewSession() (*Session, error) {
+	var h *Handle
+	var s *Session
+	var err error
+
+	if h, err = NewHandle(); err != nil {
+		return nil, err
 	}
-	s, err = Open(h)
-	return
+	if s, err = Open(h); err != nil {
+		return nil, err
+	}
+
+	return s, nil
 }
 
 // Refresh updates the session if the virtual machine session
-// changed on the host. In this case, changed is set to true.
-func (s *Session) Refresh() (changed bool, err error) {
+// changed on the host.
+func (s *Session) Refresh() (bool, error) {
 	newSession := new(C.VMSessionId)
-	e := C.VMGuestLib_GetSessionId(*s.Handle.NativeHandle, newSession)
-	if e != ErrorSuccess {
-		err = newError(e)
-		return
+	if e := C.VMGuestLib_GetSessionId(*s.Handle.NativeHandle, newSession); e != ErrorSuccess {
+		return false, newError(e)
 	}
-	changed = (*newSession != *s.NativeSession)
+	changed := (*newSession != *s.NativeSession)
 	s.NativeSession = newSession
-	return
+	return changed, nil
 }
 
 // RefreshInfo calls UpdateInfo() on the underlying handle
 // then calls Refresh() on this session.
-func (s *Session) RefreshInfo() (changed bool, err error) {
-	err = s.Handle.UpdateInfo()
-	if err != nil {
-		return
+func (s *Session) RefreshInfo() (bool, error) {
+	if err := s.Handle.UpdateInfo(); err != nil {
+		return false, err
 	}
-	changed, err = s.Refresh()
-	return
+	return s.Refresh()
 }

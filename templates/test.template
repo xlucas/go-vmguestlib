@@ -1,11 +1,14 @@
 
 func Test${FUNCTION}(t *testing.T) {
-	s, err := NewSession()
-	if err != nil {
+    var err error
+    var s *Session
+
+	if s, err = NewSession(); err != nil {
 		t.Fatal(err)
 	}
-	_, err = s.${FUNCTION}()
-	if err != nil {
+    if _, err = s.${FUNCTION}(); err != nil {
 		t.Fatal(err)
 	}
+
+    s.Close()
 }

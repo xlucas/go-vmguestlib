@@ -23,24 +23,19 @@ type Handle struct {
 }
 
 // NewHandle opens a new handle.
-func NewHandle() (h *Handle, err error) {
-	h = &Handle{
+func NewHandle() (*Handle, error) {
+	h := &Handle{
 		NativeHandle: new(C.VMGuestLibHandle),
 	}
-	e := C.VMGuestLib_OpenHandle(h.NativeHandle)
-	if e != ErrorSuccess {
-		err = newError(e)
+	if e := C.VMGuestLib_OpenHandle(h.NativeHandle); e != ErrorSuccess {
+		return h, newError(e)
 	}
-	return h, err
+	return h, nil
 }
 
 // Close releases a previously opened handle.
-func (h *Handle) Close() (err error) {
-	e := C.VMGuestLib_CloseHandle(*h.NativeHandle)
-	if e != ErrorSuccess {
-		err = newError(e)
-	}
-	return
+func (h *Handle) Close() {
+	C.VMGuestLib_CloseHandle(*h.NativeHandle)
 }
 
 // UpdateInfo updates the session state for the current handle.
@@ -49,40 +44,33 @@ func (h *Handle) Close() (err error) {
 // function on the native API side so environments concerned
 // about performance should minimize the number of calls to
 // this function.
-func (h *Handle) UpdateInfo() (err error) {
-	e := C.VMGuestLib_UpdateInfo(*h.NativeHandle)
-	if e != ErrorSuccess {
-		err = newError(e)
+func (h *Handle) UpdateInfo() error {
+	if e := C.VMGuestLib_UpdateInfo(*h.NativeHandle); e != ErrorSuccess {
+		return newError(e)
 	}
-	return
+	return nil
 }
 
 // getUint32Value retrieves one uint32 native accessor value
 // by calling the native accessor routine wrapped into a
 // native proxy function pointer type and converting the C
 // uint32 value to golang's relevant type.
-func (h *Handle) getUint32Value(p C.p_uint32_f) (v uint32, err error) {
+func (h *Handle) getUint32Value(p C.p_uint32_f) (uint32, error) {
 	nativeUint32 := new(C.uint32)
-	nativeError := C.proxy_uint32_f(p, *h.NativeHandle, nativeUint32)
-	if nativeError != ErrorSuccess {
-		err = newError(nativeError)
-		return
+	if e := C.proxy_uint32_f(p, *h.NativeHandle, nativeUint32); e != ErrorSuccess {
+		return 0, newError(e)
 	}
-	v = uint32(*nativeUint32)
-	return
+	return uint32(*nativeUint32), nil
 }
 
 // getUint64Value retrieves one uint64 native accessor value
 // by calling the native accessor routine wrapped into a
 // native proxy function pointer type and converting the C
 // uint64 value to golang's relevant type.
-func (h *Handle) getUint64Value(p C.p_uint64_f) (v uint64, err error) {
+func (h *Handle) getUint64Value(p C.p_uint64_f) (uint64, error) {
 	nativeUint64 := new(C.uint64)
-	nativeError := C.proxy_uint64_f(p, *h.NativeHandle, nativeUint64)
-	if nativeError != ErrorSuccess {
-		err = newError(nativeError)
-		return
+	if e := C.proxy_uint64_f(p, *h.NativeHandle, nativeUint64); e != ErrorSuccess {
+		return 0, newError(e)
 	}
-	v = uint64(*nativeUint64)
-	return
+	return uint64(*nativeUint64), nil
 }
