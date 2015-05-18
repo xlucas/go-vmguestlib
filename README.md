@@ -9,6 +9,9 @@ VMware® vSphere Guest API for Go.
 ## Disclaimer
 This is not an official VMware® product.
 
+## Who is using it ?
+[vmgstat](https://github.com/xlucas/vmgstat) : a tool to retrieve CPU & Memory virtualization statistics for guest VMs running on vSphere.
+
 ## Requirements
 In order to use this library, to build it or to run the tests, you will need to :
 
