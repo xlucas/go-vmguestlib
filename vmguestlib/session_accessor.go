@@ -114,42 +114,42 @@ func (s *Session) GetHostCPUUsed() (uint64, error) {
 	return s.Handle.getUint64Value(C.p_uint64_f(C.VMGuestLib_GetHostCpuUsedMs))
 }
 
-// GetHostMemSwapped retrieves the total memory in MB swapped out on the host.
+// GetHostMemSwapped retrieves the total amount of memory swapped out on the host, in MB.
 func (s *Session) GetHostMemSwapped() (uint64, error) {
 	return s.Handle.getUint64Value(C.p_uint64_f(C.VMGuestLib_GetHostMemSwappedMB))
 }
 
-// GetHostMemShared retrieves the total COW (Copy-On-Write) memory in MB on host.
+// GetHostMemShared retrieves the total amount of COW (Copy-On-Write) memory on the host, in MB.
 func (s *Session) GetHostMemShared() (uint64, error) {
 	return s.Handle.getUint64Value(C.p_uint64_f(C.VMGuestLib_GetHostMemSharedMB))
 }
 
-// GetHostMemUsed retrieves the total consumed memory in MB on host.
+// GetHostMemUsed retrieves the total amount of consumed memory on the host, in MB.
 func (s *Session) GetHostMemUsed() (uint64, error) {
 	return s.Handle.getUint64Value(C.p_uint64_f(C.VMGuestLib_GetHostMemUsedMB))
 }
 
-// GetHostMemPhys retrieves the total memory in MB available to host OS kernel.
+// GetHostMemPhys retrieves the total amount of memory available to the host OS kernel, in MB.
 func (s *Session) GetHostMemPhys() (uint64, error) {
 	return s.Handle.getUint64Value(C.p_uint64_f(C.VMGuestLib_GetHostMemPhysMB))
 }
 
-// GetHostMemPhysFree retrieves the total physical memory in MB free on host.
+// GetHostMemPhysFree retrieves the total amount of physical memory free on host, in MB.
 func (s *Session) GetHostMemPhysFree() (uint64, error) {
 	return s.Handle.getUint64Value(C.p_uint64_f(C.VMGuestLib_GetHostMemPhysFreeMB))
 }
 
-// GetHostMemKernOvhd retrieves the total host kernel memory in MB overhead.
+// GetHostMemKernOvhd retrieves the total amount of host kernel memory overhead, in MB.
 func (s *Session) GetHostMemKernOvhd() (uint64, error) {
 	return s.Handle.getUint64Value(C.p_uint64_f(C.VMGuestLib_GetHostMemKernOvhdMB))
 }
 
-// GetHostMemMapped retrieves the total mapped memory in MB on host.
+// GetHostMemMapped retrieves the total amount of mapped memory on the host, in MB.
 func (s *Session) GetHostMemMapped() (uint64, error) {
 	return s.Handle.getUint64Value(C.p_uint64_f(C.VMGuestLib_GetHostMemMappedMB))
 }
 
-// GetHostMemUnmapped retrieves the total unmapped memory in MB on host.
+// GetHostMemUnmapped retrieves the total amount of unmapped memory on the host, in MB.
 func (s *Session) GetHostMemUnmapped() (uint64, error) {
 	return s.Handle.getUint64Value(C.p_uint64_f(C.VMGuestLib_GetHostMemUnmappedMB))
 }
