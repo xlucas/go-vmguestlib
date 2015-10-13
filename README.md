@@ -39,4 +39,4 @@ ldconfig
 ```
 
 ## Contributing
-Feel free to contribute if you think something is missing. The makefile contains some targets that are used to generate accessors code and unit tests. It uses template files and two input lists that describe the mapping between the native and Go APIs as well as provide documentation). If you need to rebuild the accessor codes and corresponding tests, then run `make gen-accessor`.
+Feel free to contribute if you think something is missing. The makefile contains some targets that are used to generate accessors code and unit tests. It uses template files and two input lists that describe the mapping between the native and Go APIs as well as provide documentation. If you need to rebuild the accessor codes and corresponding tests, then run `make gen-accessor`.
