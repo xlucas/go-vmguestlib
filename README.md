@@ -1,7 +1,7 @@
 # go-vmguestlib
 
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/xlucas/go-vmguestlib/vmguestlib)
-[![GitHub version](https://badge.fury.io/gh/xlucas%2Fgo-vmguestlib.svg)](https://github.com/xlucas/go-vmguestlib/releases/tag/v2.0.0)
+[![GitHub version](https://img.shields.io/github/release/xlucas/go-vmguestlib.svg)](https://github.com/xlucas/go-vmguestlib/releases/tag/v2.0.0)
 
 VMware® vSphere Guest API for Go.
 
